@@ -1,0 +1,69 @@
+{
+  "entities": {
+    "market": {
+      "title": "Market",
+      "description": "Market status collection",
+      "type": "object",
+      "properties": {
+        "nyseOpen": { "type": "boolean" },
+        "sessionLabel": { "type": "string" },
+        "asOf": { "type": "string", "format": "date-time" }
+      },
+      "required": ["nyseOpen", "sessionLabel", "asOf"]
+    },
+    "market_suggestion": {
+      "title": "Market Suggestion",
+      "description": "After-hours desk suggestion document (market/suggestion)",
+      "type": "object",
+      "properties": {
+        "ticker": { "type": "string" },
+        "usd": { "type": "number" },
+        "reason": { "type": "string" },
+        "asOf": { "type": "string", "format": "date-time" }
+      },
+      "required": ["ticker", "usd", "reason"]
+    },
+    "stocks": {
+      "title": "Stocks",
+      "description": "Tokenized US stocks collection",
+      "type": "object",
+      "properties": {
+        "ticker": { "type": "string" },
+        "name": { "type": "string" },
+        "lastClose": { "type": "number" },
+        "livePrice": { "type": "number" },
+        "asOf": { "type": "string", "format": "date-time" }
+      },
+      "required": ["ticker", "name", "lastClose", "livePrice", "asOf"]
+    },
+    "trades": {
+      "title": "Trades",
+      "description": "Executed trades log",
+      "type": "object",
+      "properties": {
+        "ticker": { "type": "string" },
+        "usd": { "type": "number" },
+        "ts": { "type": "string", "format": "date-time" },
+        "status": { "type": "string" },
+        "wallet": { "type": "string" },
+        "shares": { "type": "number" },
+        "price": { "type": "number" }
+      },
+      "required": ["ticker", "usd", "ts"]
+    }
+  },
+  "firestore": {
+    "market/{id}": {
+      "entity": "market",
+      "description": "NYSE market session status document"
+    },
+    "stocks/{id}": {
+      "entity": "stocks",
+      "description": "Stock token item by ticker"
+    },
+    "trades/{id}": {
+      "entity": "trades",
+      "description": "Trade log record"
+    }
+  }
+}

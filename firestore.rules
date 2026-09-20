@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /market/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /stocks/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /history/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /stocks/{stockId}/history/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /trades/{id} {
+      allow read: if true;
+      allow create: if request.resource.data.keys().hasAll(['ticker','usd','ts']);
+      allow update, delete: if false;
+    }
+  }
+}

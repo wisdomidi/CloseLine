@@ -1,0 +1,8 @@
+{
+  "name": "CloseLine",
+  "description": "A minimal, mobile-first board tracking tokenized US stocks, live onchain prices, and NYSE close gaps.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
